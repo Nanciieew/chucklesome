@@ -1,16 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-deployment-url",
-          "value": "(?!.*preview.*)"
-        }
-      ],
-      "destination": "https://admin.crackd.ai/:path*",
-      "permanent": true
-    }
-  ]
+  "redirects": []
 }

@@ -71,6 +71,17 @@ npm run build
 
 ### Deployment
 
+For the `Nanciieew/chucklesome` copy, Vercel deploys the connected GitHub
+repository. Vercel URLs serve this app directly; `vercel.json` must not redirect
+them to the original project's `admin.crackd.ai` domain. The Chucklesome app
+switcher link uses `/overview` on the current deployment.
+
+Set the Supabase public URL and publishable (or anon) key in the Vercel project
+environment, and allow `https://<your-vercel-domain>/auth/callback` in Supabase
+Auth's redirect URL settings so Google sign-in returns to this deployment.
+
+The original upstream project's deployment is described below.
+
 This app is deployed with AWS Amplify Hosting through a console-managed GitHub
 App connection. Amplify uses the committed root `amplify.yml` build spec.
 

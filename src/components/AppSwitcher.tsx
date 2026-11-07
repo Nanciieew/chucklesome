@@ -27,6 +27,8 @@ export function AppSwitcher() {
   }, []);
 
   const getAppUrl = (appId: string) => {
+    // Chucklesome is this app: stay on the current deployment and port.
+    if (appId === "chucklesome") return "/overview";
     if (!mounted || typeof window === "undefined") return "#";
     const host = window.location.hostname;
     const isLocal = host === "localhost" || host === "127.0.0.1";
@@ -34,7 +36,6 @@ export function AppSwitcher() {
 
     if (isLocal) {
       switch (appId) {
-        case "chucklesome": return "http://localhost:3001";
         case "toosoon": return "http://localhost:3003";
         case "lolreport": return "http://localhost:3007";
         case "puniversity": return "http://localhost:3000";
@@ -43,7 +44,6 @@ export function AppSwitcher() {
 
     if (isStaging) {
       switch (appId) {
-        case "chucklesome": return "https://admin.almostcrackd.ai";
         case "toosoon": return "https://matrix.almostcrackd.ai";
         case "lolreport": return "https://stats.slightlyhumorous.org";
         case "puniversity": return "https://brain.almostcrackd.ai";
@@ -52,7 +52,6 @@ export function AppSwitcher() {
 
     // Production fallback
     switch (appId) {
-      case "chucklesome": return "https://admin.crackd.ai";
       case "toosoon": return "https://matrix.crackd.ai";
       case "lolreport": return "https://stats.humorstudy.org";
       case "puniversity": return "https://brain.crackd.ai";
