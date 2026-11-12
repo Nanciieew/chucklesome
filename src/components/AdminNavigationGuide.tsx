@@ -85,15 +85,17 @@ export default function AdminNavigationGuide({
         </Link>
       )}
       <section
-        aria-label={overview ? 'Start here' : 'Page guidance'}
+        aria-label={overview ? 'Overview shortcuts' : 'Page guidance'}
         className="rounded-xl border border-border bg-card p-4 animate-in fade-in-0 duration-200"
       >
-        <p className="text-sm font-semibold">
-          {overview ? 'Start here' : `About ${page.label}`}
-        </p>
-        <p className="mt-1 max-w-4xl text-sm leading-relaxed text-muted-foreground">
-          {page.description}
-        </p>
+        {!overview && (
+          <>
+            <p className="text-sm font-semibold">About {page.label}</p>
+            <p className="mt-1 max-w-4xl text-sm leading-relaxed text-muted-foreground">
+              {page.description}
+            </p>
+          </>
+        )}
         {related.length > 0 && (
           <>
             {!overview && (
@@ -104,7 +106,7 @@ export default function AdminNavigationGuide({
             <ul
               className={
                 overview
-                  ? 'mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4'
+                  ? 'grid gap-3 sm:grid-cols-2 xl:grid-cols-4'
                   : 'flex flex-wrap gap-2'
               }
             >
