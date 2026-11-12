@@ -23,7 +23,7 @@ export default function AdminNavigationGuide({
   const pathname = usePathname()
   const searchParams = useSearchParams()
   const context = getAdminNavigation(preview ? '/overview' : pathname)
-  if (!context) return null
+  if (!context || context.page.id === 'overview') return null
   const { page, breadcrumbs, isDetail } = context
   const overview = page.id === 'overview'
   const jobId = searchParams.get('jobId')
